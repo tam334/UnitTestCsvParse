@@ -6,8 +6,13 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F67590AD2AC1A62100B57817 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67590AC2AC1A62100B57817 /* main.cpp */; };
+		F67590B52AC1A64E00B57817 /* CsvParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67590B42AC1A64E00B57817 /* CsvParse.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		F67590912AC1975C00B57817 /* CopyFiles */ = {
+		F67590A72AC1A62100B57817 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -19,12 +24,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F67590932AC1975C00B57817 /* UnitTestCsvParse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTestCsvParse; sourceTree = BUILT_PRODUCTS_DIR; };
-		F675909F2AC19CD000B57817 /* Src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Src; sourceTree = "<group>"; };
+		F67590A92AC1A62100B57817 /* UnitTestCsvParse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTestCsvParse; sourceTree = BUILT_PRODUCTS_DIR; };
+		F67590AC2AC1A62100B57817 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F67590B32AC1A64E00B57817 /* CsvParse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = CsvParse.h; sourceTree = "<group>"; };
+		F67590B42AC1A64E00B57817 /* CsvParse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CsvParse.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F67590902AC1975C00B57817 /* Frameworks */ = {
+		F67590A62AC1A62100B57817 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,32 +41,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F675908A2AC1975C00B57817 = {
+		F67590A02AC1A62100B57817 = {
 			isa = PBXGroup;
 			children = (
-				F675909F2AC19CD000B57817 /* Src */,
-				F67590942AC1975C00B57817 /* Products */,
+				F67590AB2AC1A62100B57817 /* UnitTestCsvParse */,
+				F67590AA2AC1A62100B57817 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F67590942AC1975C00B57817 /* Products */ = {
+		F67590AA2AC1A62100B57817 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F67590932AC1975C00B57817 /* UnitTestCsvParse */,
+				F67590A92AC1A62100B57817 /* UnitTestCsvParse */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F67590AB2AC1A62100B57817 /* UnitTestCsvParse */ = {
+			isa = PBXGroup;
+			children = (
+				F67590AC2AC1A62100B57817 /* main.cpp */,
+				F67590B42AC1A64E00B57817 /* CsvParse.cpp */,
+				F67590B32AC1A64E00B57817 /* CsvParse.h */,
+			);
+			path = UnitTestCsvParse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F67590922AC1975C00B57817 /* UnitTestCsvParse */ = {
+		F67590A82AC1A62100B57817 /* UnitTestCsvParse */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F675909A2AC1975C00B57817 /* Build configuration list for PBXNativeTarget "UnitTestCsvParse" */;
+			buildConfigurationList = F67590B02AC1A62100B57817 /* Build configuration list for PBXNativeTarget "UnitTestCsvParse" */;
 			buildPhases = (
-				F675908F2AC1975C00B57817 /* Sources */,
-				F67590902AC1975C00B57817 /* Frameworks */,
-				F67590912AC1975C00B57817 /* CopyFiles */,
+				F67590A52AC1A62100B57817 /* Sources */,
+				F67590A62AC1A62100B57817 /* Frameworks */,
+				F67590A72AC1A62100B57817 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -67,24 +84,24 @@
 			);
 			name = UnitTestCsvParse;
 			productName = UnitTestCsvParse;
-			productReference = F67590932AC1975C00B57817 /* UnitTestCsvParse */;
+			productReference = F67590A92AC1A62100B57817 /* UnitTestCsvParse */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F675908B2AC1975C00B57817 /* Project object */ = {
+		F67590A12AC1A62100B57817 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					F67590922AC1975C00B57817 = {
+					F67590A82AC1A62100B57817 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = F675908E2AC1975C00B57817 /* Build configuration list for PBXProject "UnitTestCsvParse" */;
+			buildConfigurationList = F67590A42AC1A62100B57817 /* Build configuration list for PBXProject "UnitTestCsvParse" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -92,28 +109,30 @@
 				en,
 				Base,
 			);
-			mainGroup = F675908A2AC1975C00B57817;
-			productRefGroup = F67590942AC1975C00B57817 /* Products */;
+			mainGroup = F67590A02AC1A62100B57817;
+			productRefGroup = F67590AA2AC1A62100B57817 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F67590922AC1975C00B57817 /* UnitTestCsvParse */,
+				F67590A82AC1A62100B57817 /* UnitTestCsvParse */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F675908F2AC1975C00B57817 /* Sources */ = {
+		F67590A52AC1A62100B57817 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67590B52AC1A64E00B57817 /* CsvParse.cpp in Sources */,
+				F67590AD2AC1A62100B57817 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F67590982AC1975C00B57817 /* Debug */ = {
+		F67590AE2AC1A62100B57817 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -171,7 +190,7 @@
 			};
 			name = Debug;
 		};
-		F67590992AC1975C00B57817 /* Release */ = {
+		F67590AF2AC1A62100B57817 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -222,7 +241,7 @@
 			};
 			name = Release;
 		};
-		F675909B2AC1975C00B57817 /* Debug */ = {
+		F67590B12AC1A62100B57817 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -232,7 +251,7 @@
 			};
 			name = Debug;
 		};
-		F675909C2AC1975C00B57817 /* Release */ = {
+		F67590B22AC1A62100B57817 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -245,25 +264,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F675908E2AC1975C00B57817 /* Build configuration list for PBXProject "UnitTestCsvParse" */ = {
+		F67590A42AC1A62100B57817 /* Build configuration list for PBXProject "UnitTestCsvParse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F67590982AC1975C00B57817 /* Debug */,
-				F67590992AC1975C00B57817 /* Release */,
+				F67590AE2AC1A62100B57817 /* Debug */,
+				F67590AF2AC1A62100B57817 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F675909A2AC1975C00B57817 /* Build configuration list for PBXNativeTarget "UnitTestCsvParse" */ = {
+		F67590B02AC1A62100B57817 /* Build configuration list for PBXNativeTarget "UnitTestCsvParse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F675909B2AC1975C00B57817 /* Debug */,
-				F675909C2AC1975C00B57817 /* Release */,
+				F67590B12AC1A62100B57817 /* Debug */,
+				F67590B22AC1A62100B57817 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F675908B2AC1975C00B57817 /* Project object */;
+	rootObject = F67590A12AC1A62100B57817 /* Project object */;
 }
