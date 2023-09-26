@@ -16,16 +16,35 @@ std::list<std::list<std::string>> csv;
 std::string text;
 
 //行と文字数から文字位置を取得するヘルパー
-int GetCharIndex(int row, int column)
+int GetCharIndex(std::string const& text, int row, int column)
 {
+    int currentline = 1;
+    int currentindex = 0;
+    for(currentindex = 0; currentindex < text.length() && currentline < row; currentindex++)
+    {
+        if(text.at(currentindex) == '\n')
+        {
+            currentline++;
+        }
+    }
+    int c = 1;
+    for(currentindex = 0; currentindex < text.length() && text.at(currentindex) != '\n'; currentindex++)
+    {
+        if(c == column)
+        {
+            std::cout << "GetCharIndex: " << currentindex << " char: " << text.at(currentindex) << std::endl;
+            return currentindex;
+        }
+        c++;
+    }
     return 0;
 }
 
 namespace {
     //テスト
     TEST(NextCharTest, OK) {
-        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(1, 3), ','));
-        EXPECT_FALSE(CheckNextChar(text, GetCharIndex(2, 9), '2'));
+        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 1, 7), ','));
+        EXPECT_FALSE(CheckNextChar(text, GetCharIndex(text, 2, 9), '2'));
     }
 }
 
@@ -42,6 +61,7 @@ int main(int argc, const char * argv[]) {
             text += line;
         }
         
+        testing::InitGoogleTest();
         RUN_ALL_TESTS();
         
         Parse(csv, text);
