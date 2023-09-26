@@ -24,6 +24,17 @@ int main(int argc, const char * argv[]) {
         }
         std::list<std::list<std::string>> csv;
         Parse(csv, text);
+        for(std::list<std::list<std::string>>::iterator r = csv.begin();
+            r != csv.end();
+            ++r)
+        {
+            for(std::list<std::string>::iterator c = r->begin();
+                c != r->end();
+                ++c)
+            {
+                std::cout << *c << std::endl;
+            }
+        }
     }
     else
     {
