@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F67590AD2AC1A62100B57817 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67590AC2AC1A62100B57817 /* main.cpp */; };
 		F67590B52AC1A64E00B57817 /* CsvParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67590B42AC1A64E00B57817 /* CsvParse.cpp */; };
+		F6BFC91D2AC2E076002EEAAE /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = F6BFC9112AC2E076002EEAAE /* gtest-all.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		F67590AC2AC1A62100B57817 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F67590B32AC1A64E00B57817 /* CsvParse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = CsvParse.h; sourceTree = "<group>"; };
 		F67590B42AC1A64E00B57817 /* CsvParse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CsvParse.cpp; sourceTree = "<group>"; };
+		F6BFC9112AC2E076002EEAAE /* gtest-all.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "gtest-all.cc"; path = "googletest-1.14.0/googletest/src/gtest-all.cc"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +62,20 @@
 		F67590AB2AC1A62100B57817 /* UnitTestCsvParse */ = {
 			isa = PBXGroup;
 			children = (
+				F6BFC90D2AC2E05A002EEAAE /* GoogleTest */,
 				F67590AC2AC1A62100B57817 /* main.cpp */,
 				F67590B42AC1A64E00B57817 /* CsvParse.cpp */,
 				F67590B32AC1A64E00B57817 /* CsvParse.h */,
 			);
 			path = UnitTestCsvParse;
+			sourceTree = "<group>";
+		};
+		F6BFC90D2AC2E05A002EEAAE /* GoogleTest */ = {
+			isa = PBXGroup;
+			children = (
+				F6BFC9112AC2E076002EEAAE /* gtest-all.cc */,
+			);
+			path = GoogleTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +137,7 @@
 			files = (
 				F67590B52AC1A64E00B57817 /* CsvParse.cpp in Sources */,
 				F67590AD2AC1A62100B57817 /* main.cpp in Sources */,
+				F6BFC91D2AC2E076002EEAAE /* gtest-all.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +260,10 @@
 				DEVELOPMENT_TEAM = ELNG7U532J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = (
+					"googletest-1.14.0/googletest/include/",
+					"googletest-1.14.0/googletest/",
+				);
 			};
 			name = Debug;
 		};
@@ -258,6 +274,10 @@
 				DEVELOPMENT_TEAM = ELNG7U532J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = (
+					"googletest-1.14.0/googletest/include/",
+					"googletest-1.14.0/googletest/",
+				);
 			};
 			name = Release;
 		};
