@@ -3,22 +3,22 @@
 #include <list>
 
 int ParseCSV(std::list<std::list<std::string>>& dst,
-             std::string& csv,
+             std::string const& csv,
              int currentIndex);
 int ParseRow(std::list<std::list<std::string>>& dst,
-             std::string& csv,
+             std::string const& csv,
              int currentIndex);
 std::string ParseColumn(std::list<std::list<std::string>>& dst,
-                         std::string& csv,
+                         std::string const& csv,
                          int& currentIndex);
 std::string ParseToken(std::list<std::list<std::string>>& dst,
-                        std::string& csv,
+                        std::string const& csv,
                         int& currentIndex);
 std::string ParseAnyString(std::list<std::list<std::string>>& dst,
-                            std::string& csv,
+                            std::string const& csv,
                             int& currentIndex);
-int ParseNewLine(std::string& csv, int currentIndex);
-bool CheckNextChar(std::string& csv, int currentIndex, char next);
+int ParseNewLine(std::string const& csv, int currentIndex);
+bool CheckNextChar(std::string const& csv, int currentIndex, char next);
 
 //! 以下の構文木に基づきパース
 //! Csv = 行 {改行 行}* [改行]
@@ -32,7 +32,7 @@ bool CheckNextChar(std::string& csv, int currentIndex, char next);
 /// <param name="text">
 /// テキスト形式のCSV
 /// </param>
-void Parse(std::list<std::list<std::string>>& dst, std::string& text)
+void Parse(std::list<std::list<std::string>>& dst, std::string const& text)
 {
     int currentIndex = 0;
     ParseCSV(dst, text, currentIndex);
@@ -45,7 +45,7 @@ void Parse(std::list<std::list<std::string>>& dst, std::string& text)
 /// 現在の解析位置、呼び出し先の関数内で変更されるので要素数1の配列で渡す
 /// </param>
 int ParseCSV(std::list<std::list<std::string>>& dst,
-             std::string& csv,
+             std::string const& csv,
              int currentIndex)
 {
     currentIndex = ParseRow(dst, csv, currentIndex);
@@ -65,7 +65,7 @@ int ParseCSV(std::list<std::list<std::string>>& dst,
 /// 行のパーズ
 /// </summary>
 int ParseRow(std::list<std::list<std::string>>& dst,
-             std::string& csv,
+             std::string const& csv,
              int currentIndex)
 {
     std::unique_ptr<std::list<std::string>> columns(new std::list<std::string>());
@@ -91,7 +91,7 @@ int ParseRow(std::list<std::list<std::string>>& dst,
 /// 文字列
 /// </return>
 std::string ParseColumn(std::list<std::list<std::string>>& dst,
-                         std::string& csv,
+                         std::string const& csv,
                          int& currentIndex)
 {
     if(CheckNextChar(csv, currentIndex, '"'))
@@ -107,7 +107,7 @@ std::string ParseColumn(std::list<std::list<std::string>>& dst,
 /// <summary>
 /// 改行のパーズ
 /// </summary>
-int ParseNewLine(std::string& csv, int currentIndex)
+int ParseNewLine(std::string const& csv, int currentIndex)
 {
     if (CheckNextChar(csv, currentIndex, '\r'))
     {
@@ -127,7 +127,7 @@ int ParseNewLine(std::string& csv, int currentIndex)
 /// 文字列
 /// </return>
 std::string ParseToken(std::list<std::list<std::string>>& dst,
-                        std::string& csv,
+                        std::string const& csv,
                         int& currentIndex)
 {
     int adv = 0;
@@ -151,7 +151,7 @@ std::string ParseToken(std::list<std::list<std::string>>& dst,
 /// 配列、0:進めた後のindex 1:文字列
 /// </return>
 std::string ParseAnyString(std::list<std::list<std::string>>& dst,
-                           std::string& csv,
+                           std::string const& csv,
                            int& currentIndex)
 {
     if (CheckNextChar(csv, currentIndex, '"'))
@@ -181,7 +181,7 @@ std::string ParseAnyString(std::list<std::list<std::string>>& dst,
 /// <summary>
 /// 次の文字が終端でなく、nextであるか
 /// </summary>
-bool CheckNextChar(std::string& csv, int currentIndex, char next)
+bool CheckNextChar(std::string const& csv, int currentIndex, char next)
 {
     return csv.length() > currentIndex && csv[currentIndex] == next;
 }
