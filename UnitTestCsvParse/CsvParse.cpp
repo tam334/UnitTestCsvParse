@@ -159,7 +159,7 @@ std::string ParseAnyString(std::list<std::list<std::string>>& dst,
     }
     currentIndex += adv + 1;
 
-    return csv.substr(currentIndex - adv - 1, adv - 1);
+    return csv.substr(currentIndex - adv - 1, adv);
 }
 
 /// <summary>

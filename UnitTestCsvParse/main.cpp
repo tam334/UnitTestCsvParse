@@ -33,6 +33,7 @@ int GetCharIndex(std::string const& text, int row, int column)
     {
         if(c == column)
         {
+            std::cout << "GetCharIndex char : " << text.at(currentindex) << std::endl;
             return currentindex;
         }
         c++;
@@ -61,7 +62,13 @@ namespace {
     TEST(NextCharTest, Normal) {
         EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 1, 3), ','));
         EXPECT_FALSE(CheckNextChar(text, GetCharIndex(text, 2, 9), '2'));
+        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 7, 10), 'x'));
     }
+
+TEST(ParseAnyStringTest, Normal){
+    int index = GetCharIndex(text, 7, 2);
+    EXPECT_EQ("ゲーセン,iidx", ParseAnyString(csv, text, index));
+}
 }
 
 int main(int argc, const char * argv[]) {
@@ -79,6 +86,7 @@ int main(int argc, const char * argv[]) {
         
         testing::InitGoogleTest();
         RUN_ALL_TESTS();
+        csv.clear();
         
         Parse(csv, text);
         for(std::list<std::list<std::string>>::iterator r = csv.begin();
