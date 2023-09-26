@@ -20,30 +20,46 @@ int GetCharIndex(std::string const& text, int row, int column)
 {
     int currentline = 1;
     int currentindex = 0;
-    for(currentindex = 0; currentindex < text.length() && currentline < row; currentindex++)
+    while(currentindex < text.length() && currentline < row)
     {
-        if(text.at(currentindex) == '\n')
+        if(text[currentindex] == '\r')
         {
             currentline++;
         }
+        currentindex++;
     }
     int c = 1;
-    for(currentindex = 0; currentindex < text.length() && text.at(currentindex) != '\n'; currentindex++)
+    while(currentindex < text.length() && text.at(currentindex) != '\r')
     {
         if(c == column)
         {
-            std::cout << "GetCharIndex: " << currentindex << " char: " << text.at(currentindex) << std::endl;
             return currentindex;
         }
         c++;
+        if((text.at(currentindex) & 0x80) == 0)
+        {
+            currentindex += 1;
+        }
+        else if((text.at(currentindex) & 0xE0) == 0xC0)
+        {
+            currentindex += 2;
+        }
+        else if((text.at(currentindex) & 0xF0) == 0xE0)
+        {
+            currentindex += 3;
+        }
+        else if((text.at(currentindex) & 0xF8) == 0xF0)
+        {
+            currentindex += 4;
+        }
     }
     return 0;
 }
 
 namespace {
     //テスト
-    TEST(NextCharTest, OK) {
-        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 1, 7), ','));
+    TEST(NextCharTest, Normal) {
+        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 1, 3), ','));
         EXPECT_FALSE(CheckNextChar(text, GetCharIndex(text, 2, 9), '2'));
     }
 }
