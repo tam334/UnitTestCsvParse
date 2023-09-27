@@ -18,12 +18,14 @@ namespace CsvParse
                  int currentIndex)
     {
         currentIndex = ParseRow(dst, csv, currentIndex);
-        while (CheckNextChar(csv, currentIndex, '\r'))
+        while (CheckNextChar(csv, currentIndex, '\r') ||
+               CheckNextChar(csv, currentIndex, '\n'))
         {
             currentIndex = ParseNewLine(csv, currentIndex);
             currentIndex = ParseRow(dst, csv, currentIndex);
         }
-        if (CheckNextChar(csv, currentIndex, '\r'))
+        if (CheckNextChar(csv, currentIndex, '\r') ||
+            CheckNextChar(csv, currentIndex, '\n'))
         {
             currentIndex = ParseNewLine(csv, currentIndex);
         }
@@ -86,7 +88,8 @@ namespace CsvParse
         for (adv = 0; adv + currentIndex < csv.length(); adv++)
         {
             if (CheckNextChar(csv, currentIndex + adv, ',') ||
-                CheckNextChar(csv, currentIndex + adv, '\r'))
+                CheckNextChar(csv, currentIndex + adv, '\r') ||
+                CheckNextChar(csv, currentIndex + adv, '\n'))
             {
                 break;
             }
