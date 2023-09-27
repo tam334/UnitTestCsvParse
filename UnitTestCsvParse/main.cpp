@@ -33,7 +33,6 @@ int GetCharIndex(std::string const& text, int row, int column)
     {
         if(c == column)
         {
-            std::cout << "GetCharIndex char : " << text.at(currentindex) << std::endl;
             return currentindex;
         }
         c++;
