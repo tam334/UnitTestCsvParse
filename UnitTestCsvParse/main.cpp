@@ -29,7 +29,7 @@ int GetCharIndex(std::string const& text, int row, int column)
         currentindex++;
     }
     int c = 1;
-    while(currentindex < text.length() && text.at(currentindex) != '\r')
+    while(currentindex < text.length())
     {
         if(c == column)
         {
@@ -65,10 +65,16 @@ namespace {
         EXPECT_TRUE(CsvParse::CheckNextChar(text, GetCharIndex(text, 7, 10), 'x'));
     }
 
-TEST(ParseAnyStringTest, Normal){
-    int index = GetCharIndex(text, 7, 2);
-    EXPECT_EQ("ゲーセン,iidx", CsvParse::ParseAnyString(csv, text, index));
-}
+    TEST(ParseAnyStringTest, Normal){
+        int index = GetCharIndex(text, 7, 2);
+        EXPECT_EQ("ゲーセン,iidx", CsvParse::ParseAnyString(csv, text, index));
+    }
+
+    TEST(ParseNewLineTest, Normal)
+    {
+        EXPECT_EQ(CsvParse::ParseNewLine(text, GetCharIndex(text, 1, 11)), GetCharIndex(text, 2, 1));
+        EXPECT_EQ(CsvParse::ParseNewLine(text, GetCharIndex(text, 2, 1)), GetCharIndex(text, 2, 1));
+    }
 }
 
 int main(int argc, const char * argv[]) {
