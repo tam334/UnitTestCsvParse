@@ -12,8 +12,6 @@
 
 #include "gtest/gtest.h"
 
-std::list<std::list<std::string>> csv;
-
 //行と文字数から文字位置を取得するヘルパー
 //行と文字数はutf8の文字準拠、Atom等のテキストエディタのステータスバーなどで確認する
 int GetCharIndex(std::string const& text, int row, int column)
@@ -115,11 +113,13 @@ namespace {
     }
 
     TEST(ParseAnyStringTest, Normal){
+        std::list<std::list<std::string>> csv;
         {
             std::string text = ReadFileAll("家計簿LF.csv");
             int index = GetCharIndex(text, 7, 2);
             EXPECT_EQ("ゲーセン,iidx", CsvParse::ParseAnyString(csv, text, index));
         }
+        csv.clear();
         {
             std::string text = ReadFileAll("家計簿.csv");
             int index = GetCharIndex(text, 7, 2);
@@ -143,6 +143,7 @@ namespace {
 
     TEST(ParseTokenTest, Normal)
     {
+        std::list<std::list<std::string>> csv;
         {
             std::string text = ReadFileAll("家計簿LF.csv");
             int index = GetCharIndex(text, 4, 1);
@@ -150,6 +151,7 @@ namespace {
             index = GetCharIndex(text, 5, 12);
             EXPECT_EQ(CsvParse::ParseToken(csv, text, index), "5159");
         }
+        csv.clear();
         {
             std::string text = ReadFileAll("家計簿.csv");
             int index = GetCharIndex(text, 4, 1);
@@ -161,12 +163,12 @@ namespace {
 }
 
 int main(int argc, const char * argv[]) {
-    
-    std::string text = ReadFileAll("家計簿LF.csv");
         
     testing::InitGoogleTest();
     RUN_ALL_TESTS();
-    csv.clear();
+    
+    std::string text = ReadFileAll("家計簿.csv");
+    std::list<std::list<std::string>> csv;
     
     CsvParse::Parse(csv, text);
     for(std::list<std::list<std::string>>::iterator r = csv.begin();
