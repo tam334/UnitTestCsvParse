@@ -71,6 +71,10 @@ std::string ReadFileAll(std::string filename)
         text = "";
         while(ifs)
         {
+            if(text != "")
+            {
+                text += '\n';
+            }
             std::string line;
             std::getline(ifs, line);
             text += line;
@@ -90,7 +94,7 @@ namespace {
         {
             std::string text = ReadFileAll("家計簿.csv");
             EXPECT_EQ(GetCharIndex(text, 1, 3), 6);
-            EXPECT_EQ(GetCharIndex(text, 2, 3), 25);
+            EXPECT_EQ(GetCharIndex(text, 2, 3), 26);
         }
     }
 
