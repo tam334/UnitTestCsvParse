@@ -6,31 +6,13 @@
 
 namespace CsvParse
 {
-
-    //! 以下の構文木に基づきパース
-    //! Csv = 行 {改行 行}* [改行]
-    //! 行 = カラム {, カラム}*
-    //! カラム = (トークン) | (" 任意の文字列 ")
-    //! トークン = ,"\r\nを除いた文字列
-
-    /// <summary>
-    /// CSVを解析し、二次元配列形式で出力
-    /// </summary>
-    /// <param name="text">
-    /// テキスト形式のCSV
-    /// </param>
     void Parse(std::list<std::list<std::string>>& dst, std::string const& text)
     {
         int currentIndex = 0;
         ParseCSV(dst, text, currentIndex);
     }
 
-    /// <summary>
-    /// Csvのパーズ本体
-    /// </summary>
-    /// <param name="currentIndex">
-    /// 現在の解析位置
-    /// </param>
+    
     int ParseCSV(std::list<std::list<std::string>>& dst,
                  std::string const& csv,
                  int currentIndex)
@@ -48,9 +30,6 @@ namespace CsvParse
         return currentIndex;
     }
 
-    /// <summary>
-    /// 行のパーズ
-    /// </summary>
     int ParseRow(std::list<std::list<std::string>>& dst,
                  std::string const& csv,
                  int currentIndex)
@@ -71,12 +50,6 @@ namespace CsvParse
         return currentIndex;
     }
 
-    /// <summary>
-    /// 任意の文字列のパーズ
-    /// </summary>
-    /// <return>
-    /// 文字列
-    /// </return>
     std::string ParseColumn(std::list<std::list<std::string>>& dst,
                             std::string const& csv,
                             int& currentIndex)
@@ -91,9 +64,6 @@ namespace CsvParse
         }
     }
 
-    /// <summary>
-    /// 改行のパーズ
-    /// </summary>
     int ParseNewLine(std::string const& csv, int currentIndex)
     {
         if (CheckNextChar(csv, currentIndex, '\r'))
@@ -107,12 +77,7 @@ namespace CsvParse
         return currentIndex;
     }
 
-    /// <summary>
-    /// トークンのパーズ
-    /// </summary>
-    /// <return>
-    /// 文字列
-    /// </return>
+    
     std::string ParseToken(std::list<std::list<std::string>>& dst,
                            std::string const& csv,
                            int& currentIndex)
@@ -131,12 +96,7 @@ namespace CsvParse
         return csv.substr(currentIndex - adv, adv);
     }
 
-    /// <summary>
-    /// 行のパーズ
-    /// </summary>
-    /// <return>
-    /// 行の文字列
-    /// </return>
+    
     std::string ParseAnyString(std::list<std::list<std::string>>& dst,
                                std::string const& csv,
                                int& currentIndex)
@@ -165,9 +125,6 @@ namespace CsvParse
         return csv.substr(currentIndex - adv - 1, adv);
     }
 
-    /// <summary>
-    /// 次の文字が終端でなく、nextであるか
-    /// </summary>
     bool CheckNextChar(std::string const& csv, int currentIndex, char next)
     {
         return csv.length() > currentIndex && csv[currentIndex] == next;
