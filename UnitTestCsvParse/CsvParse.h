@@ -21,7 +21,7 @@ namespace CsvParse
     /// <summary>
     /// Csvのパーズ本体
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
     /// @param [in,out] dst
     ///  格納先の二次元配列
@@ -34,7 +34,7 @@ namespace CsvParse
     /// <summary>
     /// 行のパーズ
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
     /// @param [in,out] dst
     ///  格納先の二次元配列
@@ -48,7 +48,7 @@ namespace CsvParse
     /// <summary>
     /// 行の項目(トークンか""で囲まれた任意の文字列)のパーズ
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
     /// @param [in,out] dst
     ///  格納先の二次元配列
@@ -63,7 +63,7 @@ namespace CsvParse
     /// <summary>
     /// トークンのパーズ
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
     /// @param [in,out] dst
     ///  格納先の二次元配列
@@ -77,7 +77,7 @@ namespace CsvParse
     /// <summary>
     /// ,などを含む任意の文字列のパーズ
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
     /// @param [in,out] dst
     ///  格納先の二次元配列
@@ -90,10 +90,8 @@ namespace CsvParse
     /// <summary>
     /// 改行のパーズ
     /// </summary>
-    /// @param text
+    /// @param csv
     ///  テキスト形式のCSV
-    /// @param [in,out] dst
-    ///  格納先の二次元配列
     /// @param currentIndex
     ///  現在の解析位置
     /// @return 解析後の解析位置
