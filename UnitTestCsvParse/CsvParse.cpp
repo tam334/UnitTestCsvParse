@@ -26,7 +26,7 @@ void Parse(std::list<std::list<std::string>>& dst, std::string const& text)
 /// Csvのパーズ本体
 /// </summary>
 /// <param name="currentIndex">
-/// 現在の解析位置、呼び出し先の関数内で変更されるので要素数1の配列で渡す
+/// 現在の解析位置
 /// </param>
 int ParseCSV(std::list<std::list<std::string>>& dst,
              std::string const& csv,
@@ -132,7 +132,7 @@ std::string ParseToken(std::list<std::list<std::string>>& dst,
 /// 行のパーズ
 /// </summary>
 /// <return>
-/// 配列、0:進めた後のindex 1:文字列
+/// 行の文字列
 /// </return>
 std::string ParseAnyString(std::list<std::list<std::string>>& dst,
                            std::string const& csv,
