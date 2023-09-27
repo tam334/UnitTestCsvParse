@@ -1,2 +1,4 @@
 *.xcuserstate
 /googletest*
+/UnitTestCsvParse/html
+/UnitTestCsvParse/latex
