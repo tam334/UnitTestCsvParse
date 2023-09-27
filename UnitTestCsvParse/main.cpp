@@ -60,14 +60,14 @@ int GetCharIndex(std::string const& text, int row, int column)
 namespace {
     //テスト
     TEST(NextCharTest, Normal) {
-        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 1, 3), ','));
-        EXPECT_FALSE(CheckNextChar(text, GetCharIndex(text, 2, 9), '2'));
-        EXPECT_TRUE(CheckNextChar(text, GetCharIndex(text, 7, 10), 'x'));
+        EXPECT_TRUE(CsvParse::CheckNextChar(text, GetCharIndex(text, 1, 3), ','));
+        EXPECT_FALSE(CsvParse::CheckNextChar(text, GetCharIndex(text, 2, 9), '2'));
+        EXPECT_TRUE(CsvParse::CheckNextChar(text, GetCharIndex(text, 7, 10), 'x'));
     }
 
 TEST(ParseAnyStringTest, Normal){
     int index = GetCharIndex(text, 7, 2);
-    EXPECT_EQ("ゲーセン,iidx", ParseAnyString(csv, text, index));
+    EXPECT_EQ("ゲーセン,iidx", CsvParse::ParseAnyString(csv, text, index));
 }
 }
 
@@ -88,7 +88,7 @@ int main(int argc, const char * argv[]) {
         RUN_ALL_TESTS();
         csv.clear();
         
-        Parse(csv, text);
+        CsvParse::Parse(csv, text);
         for(std::list<std::list<std::string>>::iterator r = csv.begin();
             r != csv.end();
             ++r)
